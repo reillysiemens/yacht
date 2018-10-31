@@ -2,7 +2,7 @@ from enum import Enum, auto
 
 from typing import Callable, Dict, List
 
-__version__ = '0.1.0b'
+__version__ = '1.0.0'
 
 LITTLE_STRAIGHT = [1, 2, 3, 4, 5]
 BIG_STRAIGHT = [2, 3, 4, 5, 6]
