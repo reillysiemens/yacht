@@ -74,8 +74,8 @@ def _score_big_straight(dice: List[int]) -> int:
 
 
 def _score_choice(dice: List[int]) -> int:
-    """ TODO """
-    pass
+    """ Sum of the dice """
+    return sum(dice)
 
 
 def _score_yacht(dice: List[int]) -> int:
