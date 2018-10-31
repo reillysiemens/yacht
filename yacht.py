@@ -8,6 +8,14 @@ LITTLE_STRAIGHT = [1, 2, 3, 4, 5]
 BIG_STRAIGHT = [2, 3, 4, 5, 6]
 
 
+class YachtError(Exception):
+    """ Base yacht error """
+
+
+class InvalidCategory(YachtError):
+    """ Raised if an invalid category is given """
+
+
 class Category(Enum):
     ONES = auto()
     TWOS = auto()
@@ -84,4 +92,7 @@ SCORING: Dict[Category, Callable[[List[int]], int]] = {
 
 def score(dice: List[int], category: Category) -> int:
     """ Score a sequence of dice rolls based on a given category. """
-    return SCORING[category](dice)
+    try:
+        return SCORING[category](dice)
+    except KeyError:
+        raise InvalidCategory(f"invalid category: {repr(category)}")

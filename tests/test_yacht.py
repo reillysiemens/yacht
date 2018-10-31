@@ -1,4 +1,6 @@
-from yacht import Category, score
+import pytest
+
+from yacht import Category, InvalidCategory, score
 
 
 def test_yacht():
@@ -107,3 +109,9 @@ def test_choice():
 
 def test_yacht_as_choice():
     assert score([2, 2, 2, 2, 2], Category.CHOICE) == 10
+
+
+def test_invalid_category_raises_error():
+    with pytest.raises(InvalidCategory) as exc:
+        score([1, 2, 3, 4, 5], 'not a real category') == -1
+    assert str(exc.value) == "invalid category: 'not a real category'"
