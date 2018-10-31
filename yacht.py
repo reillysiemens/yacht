@@ -21,8 +21,8 @@ class Category(Enum):
 
 
 def _score_ones(dice: List[int]) -> int:
-    """ TODO """
-    pass
+    """ 1 × number of ones """
+    return dice.count(1)
 
 
 def _score_twos(dice: List[int]) -> int:
