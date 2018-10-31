@@ -79,8 +79,8 @@ def _score_choice(dice: List[int]) -> int:
 
 
 def _score_yacht(dice: List[int]) -> int:
-    """ TODO """
-    pass
+    """ 50 points """
+    return 50 if all(d == dice[0] for d in dice) else 0
 
 
 _scoring: Dict[Category, Callable[[List[int]], int]] = {
