@@ -114,4 +114,4 @@ def test_yacht_as_choice():
 def test_invalid_category_raises_error():
     with pytest.raises(InvalidCategory) as exc:
         score([1, 2, 3, 4, 5], 'not a real category') == -1
-    assert str(exc.value) == "invalid category: 'not a real category'"
+    assert str(exc.value) == 'invalid category, use a yacht.Category member'

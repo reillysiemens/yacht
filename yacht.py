@@ -1,8 +1,8 @@
 from enum import Enum, auto
 
-from typing import Callable, Dict, List
+from typing import Callable, Dict, List, NoReturn
 
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 
 LITTLE_STRAIGHT = [1, 2, 3, 4, 5]
 BIG_STRAIGHT = [2, 3, 4, 5, 6]
@@ -74,6 +74,11 @@ def score_yacht(dice: List[int]) -> int:
     return 50 if all(d == dice[0] for d in dice) else 0
 
 
+def score_invalid(dice: List[int]) -> NoReturn:
+    """ No dice """
+    raise InvalidCategory('invalid category, use a yacht.Category member')
+
+
 SCORING: Dict[Category, Callable[[List[int]], int]] = {
     Category.ONES: score_digits(1),
     Category.TWOS: score_digits(2),
@@ -92,7 +97,4 @@ SCORING: Dict[Category, Callable[[List[int]], int]] = {
 
 def score(dice: List[int], category: Category) -> int:
     """ Score a sequence of dice rolls based on a given category. """
-    try:
-        return SCORING[category](dice)
-    except KeyError:
-        raise InvalidCategory(f"invalid category: {repr(category)}")
+    return SCORING.get(category, score_invalid)(dice)
