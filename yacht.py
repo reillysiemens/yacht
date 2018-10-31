@@ -4,6 +4,8 @@ from typing import Callable, Dict, List
 
 __version__ = '0.1.0b'
 
+LITTLE_STRAIGHT = [1, 2, 3, 4, 5]
+
 
 class Category(Enum):
     ONES = auto()
@@ -61,8 +63,8 @@ def _score_four_of_a_kind(dice: List[int]) -> int:
 
 
 def _score_little_straight(dice: List[int]) -> int:
-    """ TODO """
-    pass
+    """ 30 points """
+    return 30 if sorted(dice) == LITTLE_STRAIGHT else 0
 
 
 def _score_big_straight(dice: List[int]) -> int:
