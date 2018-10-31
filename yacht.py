@@ -105,5 +105,5 @@ SCORING: Dict[Category, Callable[[List[int]], int]] = {
 
 
 def score(dice: List[int], category: Category) -> int:
-    """ TODO """
+    """ Score a sequence of dice rolls based on a given category. """
     return SCORING[category](dice)
