@@ -5,6 +5,7 @@ from typing import Callable, Dict, List
 __version__ = '0.1.0b'
 
 LITTLE_STRAIGHT = [1, 2, 3, 4, 5]
+BIG_STRAIGHT = [2, 3, 4, 5, 6]
 
 
 class Category(Enum):
@@ -68,8 +69,8 @@ def _score_little_straight(dice: List[int]) -> int:
 
 
 def _score_big_straight(dice: List[int]) -> int:
-    """ TODO """
-    pass
+    """ 30 points """
+    return 30 if sorted(dice) == BIG_STRAIGHT else 0
 
 
 def _score_choice(dice: List[int]) -> int:
