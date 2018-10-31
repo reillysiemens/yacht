@@ -59,8 +59,9 @@ def _score_full_house(dice: List[int]) -> int:
 
 
 def _score_four_of_a_kind(dice: List[int]) -> int:
-    """ TODO """
-    pass
+    """ Total of the four dice """
+    dice = sorted(dice)
+    return 4 * dice[3] if dice[0] == dice[3] or dice[1] == dice[4] else 0
 
 
 def _score_little_straight(dice: List[int]) -> int:
