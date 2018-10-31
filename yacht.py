@@ -88,7 +88,7 @@ def score_yacht(dice: List[int]) -> int:
     return 50 if all(d == dice[0] for d in dice) else 0
 
 
-_scoring: Dict[Category, Callable[[List[int]], int]] = {
+SCORING: Dict[Category, Callable[[List[int]], int]] = {
     Category.ONES: score_ones,
     Category.TWOS: score_twos,
     Category.THREES: score_threes,
@@ -106,4 +106,4 @@ _scoring: Dict[Category, Callable[[List[int]], int]] = {
 
 def score(dice: List[int], category: Category) -> int:
     """ TODO """
-    return _scoring[category](dice)
+    return SCORING[category](dice)
