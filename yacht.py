@@ -36,8 +36,8 @@ def _score_threes(dice: List[int]) -> int:
 
 
 def _score_fours(dice: List[int]) -> int:
-    """ TODO """
-    pass
+    """ 4 × number of fours """
+    return 4 * dice.count(4)
 
 
 def _score_fives(dice: List[int]) -> int:
