@@ -23,34 +23,12 @@ class Category(Enum):
     YACHT = auto()
 
 
-def score_ones(dice: List[int]) -> int:
-    """ 1 × number of ones """
-    return dice.count(1)
-
-
-def score_twos(dice: List[int]) -> int:
-    """ 2 x number of twos """
-    return 2 * dice.count(2)
-
-
-def score_threes(dice: List[int]) -> int:
-    """ 3 x number of threes """
-    return 3 * dice.count(3)
-
-
-def score_fours(dice: List[int]) -> int:
-    """ 4 × number of fours """
-    return 4 * dice.count(4)
-
-
-def score_fives(dice: List[int]) -> int:
-    """ 5 x number of fives """
-    return 5 * dice.count(5)
-
-
-def score_sixes(dice: List[int]) -> int:
-    """ 6 x number of sixes """
-    return 6 * dice.count(6)
+def score_digits(digit: int) -> Callable[[List[int]], int]:
+    """ Generate a digit scoring function """
+    def score_digit(dice: List[int]) -> int:
+        """ Digit x number of digits """
+        return digit * dice.count(digit)
+    return score_digit
 
 
 def score_full_house(dice: List[int]) -> int:
@@ -89,12 +67,12 @@ def score_yacht(dice: List[int]) -> int:
 
 
 SCORING: Dict[Category, Callable[[List[int]], int]] = {
-    Category.ONES: score_ones,
-    Category.TWOS: score_twos,
-    Category.THREES: score_threes,
-    Category.FOURS: score_fours,
-    Category.FIVES: score_fives,
-    Category.SIXES: score_sixes,
+    Category.ONES: score_digits(1),
+    Category.TWOS: score_digits(2),
+    Category.THREES: score_digits(3),
+    Category.FOURS: score_digits(4),
+    Category.FIVES: score_digits(5),
+    Category.SIXES: score_digits(6),
     Category.FULL_HOUSE: score_full_house,
     Category.FOUR_OF_A_KIND: score_four_of_a_kind,
     Category.LITTLE_STRAIGHT: score_little_straight,
