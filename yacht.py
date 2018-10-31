@@ -54,8 +54,12 @@ def _score_sixes(dice: List[int]) -> int:
 
 
 def _score_full_house(dice: List[int]) -> int:
-    """ TODO """
-    pass
+    """ Total of the dice """
+    dice = sorted(dice)
+    full_house = (dice[0] != dice[4] and
+                  (dice[0] == dice[1] and dice[2] == dice[3] == dice[4] or
+                   dice[3] == dice[4] and dice[0] == dice[1] == dice[2]))
+    return sum(dice) if full_house else 0
 
 
 def _score_four_of_a_kind(dice: List[int]) -> int:
