@@ -26,8 +26,8 @@ def _score_ones(dice: List[int]) -> int:
 
 
 def _score_twos(dice: List[int]) -> int:
-    """ TODO """
-    pass
+    """ 2 x number of twos """
+    return 2 * dice.count(2)
 
 
 def _score_threes(dice: List[int]) -> int:
