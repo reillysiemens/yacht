@@ -46,8 +46,8 @@ def _score_fives(dice: List[int]) -> int:
 
 
 def _score_sixes(dice: List[int]) -> int:
-    """ TODO """
-    pass
+    """ 6 x number of sixes """
+    return 6 * dice.count(6)
 
 
 def _score_full_house(dice: List[int]) -> int:
